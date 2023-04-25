@@ -1,0 +1,8 @@
+builds:
+- name: build1
+  tasks:
+    - sub_task1
+    - sub_task2
+- name: build2
+  tasks:
+    - task1
