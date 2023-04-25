@@ -48,13 +48,29 @@ Task info:
 **Как и сказано в задании, сначала выводятся зависимости, а затем — зависящие от них задачи**
 
 ## Тестирование
+Для проверки кода на соблюдение PEP8 выполните
+```
+flake8
+```
+
 Тесты находятся в директории tests, также там находятся тестовые данные, tasks.yaml и builds.yaml
 
 Для запуска тестов выполните
 ```
 coverage run -m pytest -v
 ```
+```
+========================================================================================================== test session starts ===========================================================================================================
+platform win32 -- Python 3.10.4, pytest-7.3.1, pluggy-1.0.0 -- C:\Users\Artyom\PycharmProjects\saber-interactive-testcase\venv\Scripts\python.exe
+cachedir: .pytest_cache
+collected 5 items                                                                                                                                                                                                                          
 
+tests/test_app.py::test_get_tasks_list PASSED                                                                                                                                                                                       [ 20%] 
+tests/test_app.py::test_get_builds_list PASSED                                                                                                                                                                                      [ 40%] 
+tests/test_app.py::test_get_build_detail PASSED                                                                                                                                                                                     [ 60%] 
+tests/test_app.py::test_get_task_detail PASSED                                                                                                                                                                                      [ 80%] 
+tests/test_app.py::test_wrong_commands_and_args PASSED    
+```
 Чтобы узнать процент покрытия кода тестами, выполните
 ```
 coverage report
