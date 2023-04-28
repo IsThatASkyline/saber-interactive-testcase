@@ -56,11 +56,9 @@ def get_build_dependencies(path: str, build_name: str) -> List:
     выводятся зависимости, а затем — зависящие от них задачи
     """
     build_dependencies_list = find_dependencies(path, build_name)
-    if build_dependencies_list:
-        build_dependencies = arrange_tasks(build_dependencies_list)
-        return build_dependencies[:-1]
-    else:
-        return None
+    build_dependencies = arrange_tasks(build_dependencies_list)
+    return build_dependencies[:-1]
+
 
 
 def get_task_dependencies(path: str, task_name: str) -> List:
