@@ -60,7 +60,6 @@ def get_build_dependencies(path: str, build_name: str) -> List:
     return build_dependencies[:-1]
 
 
-
 def get_task_dependencies(path: str, task_name: str) -> List:
     """
     Получить список зависимостей Таска. Возвращает список, в котором сначала
