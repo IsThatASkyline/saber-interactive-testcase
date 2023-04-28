@@ -41,7 +41,7 @@ def list(path, inst):
         else:
             click.echo(f'Неверный аргумент: {inst}\nДоступные аргументы: builds, tasks')
     except FileNotFoundError:
-        click.echo(f'Не найдена директория: {path}')
+        click.echo(f'Не найдены файлы builds.yaml и tasks.yaml по пути: {path}')
 
 
 # присоединяем команду `get`
@@ -84,7 +84,7 @@ def get(path, inst, name):
         else:
             click.echo(f'Неверный аргумент: {inst}\nДоступные аргументы: build, task')
     except FileNotFoundError:
-        click.echo(f'Не найдена директория: {path}')
+        click.echo(f'Не найдены файлы builds.yaml и tasks.yaml по пути: {path}')
 
 
 if __name__ == '__main__':

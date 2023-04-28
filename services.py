@@ -55,13 +55,12 @@ def get_build_dependencies(path: str, build_name: str) -> List:
     Получить список зависимостей Билда. Возвращает список, в котором сначала
     выводятся зависимости, а затем — зависящие от них задачи
     """
-    build = get_build_detail_from_yaml(path, build_name)
-    build_tasks = []
-    for task_name in build['tasks']:
-        r = find_dependencies(path, task_name)
-        build_tasks.append(r)
-    build_dependencies = arrange_tasks(build_tasks)
-    return build_dependencies
+    build_dependencies_list = find_dependencies(path, build_name)
+    if build_dependencies_list:
+        build_dependencies = arrange_tasks(build_dependencies_list)
+        return build_dependencies[:-1]
+    else:
+        return None
 
 
 def get_task_dependencies(path: str, task_name: str) -> List:
@@ -69,14 +68,9 @@ def get_task_dependencies(path: str, task_name: str) -> List:
     Получить список зависимостей Таска. Возвращает список, в котором сначала
     выводятся зависимости, а затем — зависящие от них задачи
     """
-    task = get_task_detail_from_yaml(path, task_name)
-    task_dependencies_list = []
-    for task_name in task['dependencies']:
-        r = find_dependencies(path, task_name)
-        if r:
-            task_dependencies_list.append(r)
+    task_dependencies_list = find_dependencies(path, task_name)
     task_dependencies = arrange_tasks(task_dependencies_list)
-    return task_dependencies
+    return task_dependencies[:-1]
 
 
 def find_dependencies(path: str, task_name: str) -> List:
@@ -85,11 +79,18 @@ def find_dependencies(path: str, task_name: str) -> List:
     список с разными уровнями вложенности
     """
     task = get_task_detail_from_yaml(path, task_name)
+    if not task:
+        task = get_build_detail_from_yaml(path, task_name)
+
     try:
-        if not task['dependencies']:
-            return task['name']
+        try:
+            task_dependencies = task['dependencies']
+        except Exception:
+            task_dependencies = task['tasks']
+        if not task_dependencies:
+            return [task['name']]
         else:
-            return [[find_dependencies(path, task) for task in task['dependencies']], task['name']]
+            return [[find_dependencies(path, task) for task in task_dependencies], task['name']]
     except Exception:
         return None
 

@@ -54,7 +54,7 @@ def test_wrong_commands_and_args():
     arg_err2 = runner.invoke(main, ['list', arg])
     command_err = runner.invoke(main, [command])
 
-    assert path_err.output == f'Не найдена директория: {path}\n'
+    assert path_err.output == f'Не найдены файлы builds.yaml и tasks.yaml по пути: {path}\n'
     assert arg_err1.output == f'Неверный аргумент: {arg}\nДоступные аргументы: build, task\n'
     assert arg_err2.output == f'Неверный аргумент: {arg}\nДоступные аргументы: builds, tasks\n'
     assert f"Error: No such command '{command}'.\n" in command_err.output
