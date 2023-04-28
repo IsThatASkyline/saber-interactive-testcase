@@ -5,7 +5,7 @@
 
 ## Установка
 ```
-git clone https://github.com/artklk12/saber-interactive-testcase.git
+git clone https://github.com/artklk12/saber-interactive-testcase.git ./
 pip install -r requirements.txt
 ```
 
@@ -37,7 +37,7 @@ List of available builds:
 
 2) Вывести информацию о Таске design_black_centaurs, из файла, находящегося в директории old_data
 ```
-python app.py get design_black_centaurs -p 'old_data/'
+python app.py get task design_black_centaurs -p 'old_data/'
 ```
 ```
 Task info:
