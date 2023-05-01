@@ -59,8 +59,7 @@ def get(path, inst, name):
     try:
         if inst == 'build':
             try:
-                build_info = services.get_build_detail_from_yaml(path, name)
-                build_dependencies = services.get_build_dependencies(path, name)
+                build_info, build_dependencies = services.get_build_dependencies(path, name)
                 click.echo('Build info:')
                 click.echo(f"* name: {build_info['name']}")
                 click.echo(f"* tasks: {', '.join(build_dependencies) if build_dependencies else []}")
@@ -71,8 +70,7 @@ def get(path, inst, name):
 
         elif inst == 'task':
             try:
-                task_info = services.get_task_detail_from_yaml(path, name)
-                task_dependencies = services.get_task_dependencies(path, name)
+                task_info, task_dependencies = services.get_task_dependencies(path, name)
                 click.echo('Task info:')
                 click.echo(f"* name: {task_info['name']}")
                 click.echo(f"* dependencies: {', '.join(task_dependencies) if task_dependencies else []}")
