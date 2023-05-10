@@ -5,7 +5,7 @@
 
 ## Установка
 ```
-git clone https://github.com/artklk12/saber-interactive-testcase.git ./
+git clone https://github.com/artklk12/saber-interactive-testcase.git
 pip install -r requirements.txt
 ```
 
