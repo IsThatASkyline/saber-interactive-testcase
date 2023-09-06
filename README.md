@@ -1,7 +1,7 @@
 # Тестовое задание на позицию Junior Python Developer в Saber Interactive
 
 ## Задание
-[Saber_Interactive_Junior_Python_Developer.docx](https://github.com/artklk12/saber-interactive-testcase/files/11322437/Saber_Interactive_Junior_Python_Developer.docx)
+[Saber_Interactive_Junior_Python_Developer.docx](https://github.com/IsThatASkyline/saber-interactive-testcase/files/11322437/Saber_Interactive_Junior_Python_Developer.docx)
 
 ## Установка
 ```
